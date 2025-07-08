@@ -12,7 +12,6 @@ import sys
 
 N = int(sys.stdin.readline())  #온라인 저지 회원 수 읽기
 member = []
-age_min = 1
 
 #회원정보저장
 for _ in range(N):
