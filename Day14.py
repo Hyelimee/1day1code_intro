@@ -30,16 +30,16 @@ for _ in range(int(N)):
 #print(target)
 
 current = 0 #영기 번호
-M = 0       #
-visit = []
+M = 0       #지목한 사람한테 이동할때마다 하나씩 증가시킬거야
+visit = []  #지목했던 번호 저장하는 공간
 
 while True:
     if current == int(K):   #지목된 현재 번호가 보성이 번호와 같다면
         print(M)            #지목한 횟수를 출력
         break
     if current in visit:    #한번 지목했던 번호를 또 지목하는 경우
-        print(-1)
+        print(-1)           #그럼 보성이를 뽑을 일이 영원히 없기때문에 -1을 뱉음
         break
     visit.append(current)      #현재 번호 저장
     current = target[current]  #다음사람 찍기 위해 업데이트
-    M += 1  #한명 거치면 1증가
+    M += 1                     #한명 거치면 1증가
