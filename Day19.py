@@ -44,10 +44,6 @@ for i in result:
     re.append(temp)
 #print(re)
 
-#크기 비교하기
-max_num = [max(x) for x in re]
-#print(max_num)
-
 #인덱스 뽑아오기 + 동점일 때 번호 큰 사람이 이기게
 max_score = -1
 winner_index = -1
