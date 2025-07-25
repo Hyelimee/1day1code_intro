@@ -45,13 +45,49 @@ for i in result:
 #print(re)
 
 #인덱스 뽑아오기 + 동점일 때 번호 큰 사람이 이기게
-max_score = -1
-winner_index = -1
+import sys
 
-for idx in range(N):
-    max_unit = max(sum(comb) % 10 for comb in combinations(card[idx], 3))
-    if max_unit >= max_score:
-        max_score = max_unit
-        winner_index = idx + 1
+N = int(sys.stdin.readline())  #게임에 참여하는 사람의 수
+card = []
 
-print(winner_index)
+for _ in range(N):
+    a = list(map(int, sys.stdin.readline().strip().split(' ')))
+    card.append(a)
+#print(card)
+
+#세개의 카드를 뽑아서 더해볼까나
+from itertools import combinations
+
+result = []
+
+for i in card:
+    sums = []
+    combi = combinations(i, 3)
+    for j in combi:
+        b = sum(j)
+        sums.append(b)
+    result.append(sums)
+#print(result)
+
+
+#1의자리만 구분하기
+re = []
+for i in result:
+    temp = []
+    for j in i:
+        temp.append(j % 10)
+    re.append(temp)
+#print(re)
+
+#크기 비교하기
+max_num = [max(x) for x in re]
+#print(max_num)
+
+#인덱스 뽑아오기 + 동점일 때 번호 큰 사람이 이기게
+max_value = max(max_num)
+
+# 마지막으로 max_value를 가진 인덱스를 찾기 (동점일 때 번호가 큰 사람)
+for i in range(N-1, -1, -1):
+    if max_num[i] == max_value:
+        print(i + 1)
+        break
